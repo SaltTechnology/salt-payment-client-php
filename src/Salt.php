@@ -1,6 +1,4 @@
 <?php
-echo getcwd() . "\n";
-
-require_once('Constants.php');
-require_once('Autoloader.php');
-spl_autoload_register('Autoloader::loader');
+require_once dirname( __FILE__ ) . '/Constants.php';
+require_once dirname( __FILE__ ) . '/Autoloader.php';
+spl_autoload_register( 'Autoloader::loader' );
