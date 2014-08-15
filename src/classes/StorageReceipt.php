@@ -36,7 +36,7 @@ class StorageReceipt {
             $this->storageTokenId = $this->params["STORAGE_TOKEN_ID"];
         }
         else {
-            echo '<span style="color: red;" />'.UNDEFINED_STORAGE_TOKEN."<br/>".'</span>';
+            throw new SaltError( UNDEFINED_STORAGE_TOKEN );
         }
 
         if ( isset( $this->params["ERROR_CODE"] ) ) {
@@ -123,7 +123,7 @@ class StorageReceipt {
         }
         else {
 
-            echo '<span style="color: red;" />'.UNDEFINED_PAYMENT_PROFILE_AVAILABILITY."<br/>".'</span>';
+            throw new SaltError( UNDEFINED_PAYMENT_PROFILE_AVAILABILITY );
         }
 
 

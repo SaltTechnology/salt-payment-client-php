@@ -28,7 +28,7 @@ class CreditCardReceipt {
         // parse response into param associative array
 
         $this->response = $response;
-        $lines = explode( "\n", $this->response );
+        $lines = explode( "\n" , $this->response );
         $this->params = array();
 
         $this->params["ERROR_CODE"] = null;
@@ -63,7 +63,7 @@ class CreditCardReceipt {
                 //list($paramKey, $paramValue) = explode("=", $lines[$i]);
             }
             catch( Exception $e ) {
-                echo '<span style="color: red;" />'.$e->getMessage()."<br/>".'</span>';
+                throw new SaltError( $e->getMessage() );
             }
 
             $this->params[$paramKey] = $paramValue;
@@ -80,33 +80,33 @@ class CreditCardReceipt {
             $this->approved = $this->params["APPROVED"] == 'true';}
         else {
 
-            echo '<span style="color: red;" />'.UNDEFINED_CREDIT_CARD_INFO."<br/>".'</span>';
+            throw new SaltError( UNDEFINED_CREDIT_CARD_INFO );
         }
         if ( isset( $this->params["TRANSACTION_ID"] ) ) {
 
             $this->transactionId = $this->params["TRANSACTION_ID"];}
         else {
-            echo '<span style="color: red;" />'.UNDEFINED_TRANSACTION_INFO."<br/>".'</span>';
+            throw new SaltError( UNDEFINED_TRANSACTION_INFO );
         }
         if ( isset( $this->params["ORDER_ID"] ) ) {
             $this->orderId = $this->params["ORDER_ID"];
         }
 
         else {
-            echo '<span style="color: red;" />'.UNDEFINED_ORDER_ID."<br/>".'</span>';
+            throw new SaltError( UNDEFINED_ORDER_ID );
         }
         if ( isset( $this->params["PROCESSED_DATE"] ) ) {
             // returned date time is in yymmddhhiiss format
             $processedDate = $this->params["PROCESSED_DATE"];
         }
         else {
-            echo '<span style="color: red;" />'.UNDEFINED_PROCESSED_DATE."<br/>".'</span>';
+            throw new SaltError( UNDEFINED_PROCESSED_DATE );
         }
         if ( isset( $this->params["PROCESSED_TIME"] ) ) {
             $processedTime = $this->params["PROCESSED_TIME"];
         }
         else {
-            echo '<span style="color: red;" />'.UNDEFINED_PROCESSED_TIME."<br/>".'</span>';
+            throw new SaltError( UNDEFINED_PROCESSED_TIME );
         }
 
 
@@ -126,39 +126,39 @@ class CreditCardReceipt {
             $this->errorCode = $this->params["ERROR_CODE"];
         }
         else {
-            echo '<span style="color: red;" />'.UNDEFINED_ERROR_CODE."<br/>".'</span>';
+            throw new SaltError ( UNDEFINED_ERROR_CODE );
         }
 
         if ( isset( $this->params["ERROR_MESSAGE"] ) ) {
             $this->errorMessage = $this->params["ERROR_MESSAGE"];
         }
         else {
-            echo '<span style="color: red;" />'.UNDEFINED_ERROR_MESSAGE."<br/>".'</span>';
+            throw new SaltError( UNDEFINED_ERROR_MESSAGE );
         }
         if ( isset( $this->params["DEBUG_MESSAGE"] ) ) {
             $this->debugMessage = $this->params["DEBUG_MESSAGE"];
         }
         else {
-            echo '<span style="color: red;" />'.UNDEFINED_DEBUG_MESSAGE."<br/>".'</span>';
+            throw new SaltError( UNDEFINED_DEBUG_MESSAGE );
         }
 
         // parse the approval info
 
         if ( isset( $this->params["AUTHORIZED_AMOUNT"] )=== false ) {
-            echo '<span style="color: red;" />'.UNDEFINED_AUTHORIZED_AMOUNT."<br/>".'</span>';
+            throw new SaltError( UNDEFINED_AUTHORIZED_AMOUNT );
         }
 
         if ( isset( $this->params["APPROVAL_CODE"] )===false ) {
-            echo '<span style="color: red;" />'.UNDEFINED_APPROVAL_CODE."<br/>".'</span>';
+            throw new SaltError( UNDEFINED_APPROVAL_CODE );
         }
 
 
         if ( isset( $this->params["TRACE_NUMBER"] )===false ) {
-            echo '<span style="color: red;" />'.UNDEFINED_TRACE_NUMBER."<br/>".'</span>';
+            throw new SaltError( UNDEFINED_TRACE_NUMBER );
         }
 
         if ( isset( $this->params["REFERENCE_NUMBER"] )===false ) {
-            echo '<span style="color: red;" />'.UNDEFINED_REFERENCE_NUMBER."<br/>".'</span>';
+            throw new SaltError( UNDEFINED_REFERENCE_NUMBER ) ;
         }
 
         if ( isset( $this->params["AUTHORIZED_AMOUNT"] ) && isset( $this->params["APPROVAL_CODE"] ) && isset( $this->params["TRACE_NUMBER"] ) && isset( $this->params["REFERENCE_NUMBER"] ) ) {
@@ -191,20 +191,20 @@ class CreditCardReceipt {
                 }
             }
             else {
-                echo '<span style="color: red;" />'.UNDEFINED_AVS_RESPONSE."<br/>".'</span>';
+                throw new SaltError( UNDEFINED_AVS_RESPONSE );
             }
 
             if ( isset( $this->params["AVS_RESPONSE_CODE"] )===false ) {
-                echo '<span style="color: red;" />'.UNDEFINED_AVS_RESPONSE_CODE."<br/>".'</span>';
+                throw new SaltError( UNDEFINED_AVS_RESPONSE_CODE );
             }
             if ( isset( $this->params["STREET_MATCHED"] )===false ) {
-                echo '<span style="color: red;" />'.UNDEFINED_STREET_MATCHED."<br/>".'</span>';
+                throw new SaltError( UNDEFINED_STREET_MATCHED );
             }
             if ( isset( $this->params["ZIP_MATCHED"] )===false ) {
-                echo '<span style="color: red;" />'.UNDEFINED_ZIP_MATCHED."<br/>".'</span>';
+                throw new SaltError( UNDEFINED_ZIP_MATCHED );
             }
             if ( isset( $this->params["ZIP_TYPE"] )===false ) {
-                echo '<span style="color: red;" />'.UNDEFINED_ZIP_TYPE."<br/>".'</span>';
+                throw new SaltError( UNDEFINED_ZIP_TYPE );
             }
             if ( isset( $this->params["AVS_RESPONSE_CODE"] ) && isset( $this->params["STREET_MATCHED"] ) && isset( $this->params["ZIP_MATCHED"] )
                 && isset( $this->params["ZIP_TYPE"] ) ) {
@@ -220,10 +220,10 @@ class CreditCardReceipt {
             }
         }
         if ( isset( $this->params["CVV2_RESPONSE_MESSAGE"] )===false ) {
-            echo '<span style="color: red;" />'.UNDEFINED_CVV2_RESPONSE_MESSAGE."<br/>".'</span>';
+            throw new SaltError( UNDEFINED_CVV2_RESPONSE_MESSAGE );
         }
         if ( isset( $this->params["CVV2_RESPONSE_CODE"] )===false ) {
-            echo '<span style="color: red;" />'.UNDEFINED_CVV2_RESPONSE_CODE."<br/>".'</span>';
+            throw new SaltError( UNDEFINED_CVV2_RESPONSE_CODE );
         }
 
 
@@ -250,14 +250,14 @@ class CreditCardReceipt {
             $this->fraudScore = $this->params["FRAUD_SCORE"];
         }
         else {
-            echo '<span style="color: red;" />'.UNDEFINED_FRAUD_SCORE."<br/>".'</span>';
+            throw new SaltError( UNDEFINED_FRAUD_SCORE );
         }
         if ( isset( $this->params["FRAUD_DECISION"] ) ) {
 
             $this->fraudDecision = $this->params["FRAUD_DECISION"];
         }
         else {
-            echo '<span style="color: red;" />'.UNDEFINED_FRAUD_DESICION."<br/>".'</span>';
+            throw new SaltError( UNDEFINED_FRAUD_DECISION );
         }
 
         // parse periodic purchase info
