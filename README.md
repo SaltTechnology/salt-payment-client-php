@@ -8,3 +8,11 @@ Information about our payment platform and full API documentation can be found h
 
 Additional instructions on how to get started with the client library can found here: http://salttechnology.github.io/client_libraries.html
 
+
+
+## Testing
+
+To run the tests, you'll need PHPUnit. Run the following on your command line from the root directory of this project:
+```
+> phpunit --bootstrap test/SaltTest.php test/tests/*
+```
