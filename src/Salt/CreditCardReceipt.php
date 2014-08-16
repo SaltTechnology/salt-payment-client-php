@@ -1,5 +1,7 @@
 <?php
 namespace SALT;
+
+use \Exception;
 class CreditCardReceipt {
     private $params = null;
     private $approved = false;
@@ -63,7 +65,7 @@ class CreditCardReceipt {
 
                 //list($paramKey, $paramValue) = explode("=", $lines[$i]);
             }
-            catch( Exception $e ) {
+            catch( \Exception $e ) {
                 throw new SaltError( $e->getMessage() );
             }
 

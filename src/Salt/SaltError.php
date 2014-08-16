@@ -1,6 +1,6 @@
 <?php
 namespace SALT;
-class SaltError extends Exception
+class SaltError extends \Exception
 {
 
     public function __construct($message) {
