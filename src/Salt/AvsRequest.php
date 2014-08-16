@@ -1,5 +1,6 @@
 <?php
-class Cvv2Request {
+namespace Salt;
+class AvsRequest {
     private $code = null;
 
     public function __get( $property ) {
@@ -15,12 +16,12 @@ class Cvv2Request {
         }
         return $this;
     }
-    public function __construct( $code ) {
-        $this->code = $code;
-    }
     function __toString() {
         if ( isset( $code ) )
             return $code;
     }
 
-}// Cvv2Request
+    public function __construct( $code ) {
+        $this->code = $code;
+    }
+}//AvsRequest

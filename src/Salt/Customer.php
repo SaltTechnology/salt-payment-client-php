@@ -1,4 +1,5 @@
 <?php
+namespace Salt;
 class Customer {
     private $emailHash = null;
     private $customerName = null;

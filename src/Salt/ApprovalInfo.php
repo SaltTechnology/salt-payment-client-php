@@ -1,4 +1,5 @@
 <?php
+namespace Salt;
 class ApprovalInfo {
     private $authorizedAmount = 0;
     private $approvalCode = null;

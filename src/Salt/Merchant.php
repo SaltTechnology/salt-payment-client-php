@@ -1,4 +1,5 @@
 <?php
+namespace Salt;
 class Merchant {
     private $merchantId;
     private $apiToken;

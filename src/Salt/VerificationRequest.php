@@ -1,4 +1,5 @@
 <?php
+namespace Salt;
 class VerificationRequest {
     private $avsRequest = null;
     private $cvv2Request = null;

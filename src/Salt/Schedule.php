@@ -1,17 +1,17 @@
 <?php
-class Cvv2Response {
-    private $code;
-    private $message;
-    public function __construct( $code, $message ) {
-        $this->code = $code;
-        $this->message = $message;
-    }
+namespace Salt;
+class Schedule {
+    private $scheduleType = null;
+    private $intervalLength = null;
 
+    public function __construct( $type, $intervalLength ) {
+        $this->scheduleType = $type;
+        $this->intervalLength = $intervalLength;
+    }
     public function __get( $property ) {
         if ( property_exists( $this, $property ) ) {
             return $this->$property;
         }
-
     }
 
     public function __set( $property, $value ) {
@@ -22,8 +22,8 @@ class Cvv2Response {
     }
 
     function __toString() {
-        if ( isset( $code ) && isset( $message ) )
-            return $code.$message;
+        if ( isset( $scheduleType ) && isset( $intervalLength ) )
+            return $scheduleType.$intervalLength;
     }
 
-}// Cvv2Response
+}

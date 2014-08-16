@@ -1,4 +1,7 @@
 <?php
+
+use \Salt\Address;
+
 class AddressTest extends PHPUnit_Framework_TestCase {
 
     protected $address;

@@ -1,4 +1,5 @@
 <?php
+namespace Salt;
 class CreditCard {
     private $creditCardNumber;
     private $expiryDate;

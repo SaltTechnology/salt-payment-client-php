@@ -1,5 +1,5 @@
 <?php
-
+namespace Salt;
 class AvsResponse {
     private $avsResponseCode;
     private $streetMatched;

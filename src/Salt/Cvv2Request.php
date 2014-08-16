@@ -1,16 +1,13 @@
 <?php
-class Schedule {
-    private $scheduleType = null;
-    private $intervalLength = null;
+namespace Salt;
+class Cvv2Request {
+    private $code = null;
 
-    public function __construct( $type, $intervalLength ) {
-        $this->scheduleType = $type;
-        $this->intervalLength = $intervalLength;
-    }
     public function __get( $property ) {
         if ( property_exists( $this, $property ) ) {
             return $this->$property;
         }
+
     }
 
     public function __set( $property, $value ) {
@@ -19,10 +16,12 @@ class Schedule {
         }
         return $this;
     }
-
+    public function __construct( $code ) {
+        $this->code = $code;
+    }
     function __toString() {
-        if ( isset( $scheduleType ) && isset( $intervalLength ) )
-            return $scheduleType.$intervalLength;
+        if ( isset( $code ) )
+            return $code;
     }
 
-}
+}// Cvv2Request

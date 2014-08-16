@@ -1,4 +1,5 @@
 <?php
+namespace Salt;
 
 // SALT Client API for PHP >= 5.3
 

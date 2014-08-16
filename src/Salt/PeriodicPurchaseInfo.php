@@ -1,4 +1,5 @@
 <?php
+namespace Salt;
 class PeriodicPurchaseInfo {
     private $periodicTransactionId = null;
     private $lastPaymentId = null;
