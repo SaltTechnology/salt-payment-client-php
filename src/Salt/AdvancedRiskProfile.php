@@ -1,5 +1,5 @@
 <?php
-namespace Salt;
+namespace SALT;
 class AdvancedRiskProfile {
     private $customer = null;
     private $billingAddress = null;

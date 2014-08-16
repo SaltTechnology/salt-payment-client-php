@@ -1,5 +1,5 @@
 <?php
-namespace Salt;
+namespace SALT;
 class StorageReceipt {
     private $params = null;
     private $approved = false;

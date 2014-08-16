@@ -1,5 +1,5 @@
 <?php
-namespace Salt;
+namespace SALT;
 class AvsRequest {
     private $code = null;
 

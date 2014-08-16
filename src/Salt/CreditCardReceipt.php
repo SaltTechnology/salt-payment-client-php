@@ -1,5 +1,5 @@
 <?php
-namespace Salt;
+namespace SALT;
 class CreditCardReceipt {
     private $params = null;
     private $approved = false;

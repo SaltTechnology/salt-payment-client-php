@@ -1,5 +1,5 @@
 <?php
-namespace Salt;
+namespace SALT;
 class SaltError extends Exception
 {
 

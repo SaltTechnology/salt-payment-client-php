@@ -1,5 +1,5 @@
 <?php
-namespace Salt;
+namespace SALT;
 class CustomerProfile {
     private $legalName = null;
     private $tradeName = null;

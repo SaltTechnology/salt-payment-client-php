@@ -1,5 +1,5 @@
 <?php
-namespace Salt;
+namespace SALT;
 class PaymentProfile {
     private $creditCard = null;
     private $customerProfile = null;

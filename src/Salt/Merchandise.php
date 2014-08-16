@@ -1,5 +1,5 @@
 <?php
-namespace Salt;
+namespace SALT;
 class Merchandise {
     private $billingPhone = null;
     private $shippingPhone = null;

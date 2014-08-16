@@ -1,5 +1,5 @@
 <?php
-namespace Salt;
+namespace SALT;
 class Address {
     private $address = null;
     private $city = null;

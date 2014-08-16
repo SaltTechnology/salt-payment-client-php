@@ -1,6 +1,6 @@
 <?php
 
-use \Salt\Address;
+use \SALT\Address;
 
 class AddressTest extends PHPUnit_Framework_TestCase {
 

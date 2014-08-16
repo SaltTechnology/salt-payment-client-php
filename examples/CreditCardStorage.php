@@ -1,5 +1,5 @@
 <?php
-include '../lib/HttpsCreditCardService.php';
+include __DIR__.'../src/SALT.php';
 
 /** An example of using the SALT Secure Storage API to store then use a stored Credit Card */
 

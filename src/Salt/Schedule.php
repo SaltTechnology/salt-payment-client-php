@@ -1,5 +1,5 @@
 <?php
-namespace Salt;
+namespace SALT;
 class Schedule {
     private $scheduleType = null;
     private $intervalLength = null;

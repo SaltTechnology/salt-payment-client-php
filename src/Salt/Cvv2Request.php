@@ -1,5 +1,5 @@
 <?php
-namespace Salt;
+namespace SALT;
 class Cvv2Request {
     private $code = null;
 
