@@ -16,11 +16,8 @@ class StorageReceipt {
     public function __construct( $response ) {
 
         if ( $response == null ) {
-            return;
+            throw new SaltError( 'Missing response for StorageReceipt' );
         }
-
-
-
 
         $this->response = $response;
         $lines = explode( "\n", $this->response );
@@ -32,20 +29,19 @@ class StorageReceipt {
             $this->params[$paramKey] = $paramValue;
         }
         $this->approved = $this->params["APPROVED"] == 'true';
+
+        if ( isset( $this->params["ERROR_CODE"] ) && $this->params["ERROR_CODE"] != '0' && isset( $this->params["ERROR_MESSAGE"] ) ) {
+            throw new SaltError( constant($this->params["ERROR_MESSAGE"]) );
+        }
+
         if ( isset( $this->params["STORAGE_TOKEN_ID"] ) ) {
 
             $this->storageTokenId = $this->params["STORAGE_TOKEN_ID"];
-        }
-        else {
+        } else {
             throw new SaltError( UNDEFINED_STORAGE_TOKEN );
         }
 
-        if ( isset( $this->params["ERROR_CODE"] ) ) {
-            $this->errorCode = $this->params["ERROR_CODE"];
-        }
-        if ( isset( $this->params["ERROR_MESSAGE"] ) ) {
-            $this->errorMessage = $this->params["ERROR_MESSAGE"];
-        }
+
         if ( isset( $this->params["DEBUG_MESSAGE"] ) ) {
             $this->debugMessage = $this->params["DEBUG_MESSAGE"];
         }
@@ -53,10 +49,6 @@ class StorageReceipt {
         if ( isset( $this->params["PAYMENT_PROFILE_AVAILABLE"] ) ) {
             // make sure profile available
             $paymentProfileAvailable = $this->params["PAYMENT_PROFILE_AVAILABLE"];
-
-
-
-
             // parse the profile
             if ( $paymentProfileAvailable != null && $paymentProfileAvailable ) {
                 // parse the CreditCard
