@@ -40,6 +40,14 @@ const C400_DECLINED_FROM_FRAUD_PROVIDER = "Advanced Fraud Suite only. Declined d
 const C401_APPROVED_FROM_FRAUD_PROVIDER = "Advanced Fraud Suite only. Approved by fraud suite check. Applies to a fraud-suite-only check";
 const C402_REVIEW_FROM_FRAUD_PROVIDER = "Advanced Fraud Suite only. A review status was returned by the fraud suite check. You should login to the Fraud Provider interface to review the transaction.";
 
+//Util Constants
+define('MARKET_SEGMENT_INTERNET', 'I');
+define('MARKET_SEGMENT_MOTO', 'M');
+define('MARKET_SEGMENT_RETAIL', 'G');
+
+
+
+
 // Credit Card Receipt
 define( 'UNDEFINED_STORAGE_TOKEN', 'Please provide the storage token' );
 define( 'UNDEFINED_CREDIT_CARD_INFO', 'Please provide information whether credit card information is set' );

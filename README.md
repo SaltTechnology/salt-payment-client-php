@@ -9,6 +9,27 @@ Information about our payment platform and full API documentation can be found h
 Additional instructions on how to get started with the client library can found here: http://salttechnology.github.io/client_libraries.html
 
 
+## Dependencies
+
+SALT's PHP library requires PHP version 5.3.0 or higher.
+
+## Usage
+
+To use this library, include the SALT.php file and start using the library.
+
+
+
+```
+<?php
+include 'path/to/SALT/lib/SALT.php';
+use \SALT\Merchant;
+use \SALT\HttpsCreditCardService;
+...
+$url = 'https://test.salt.com/gateway/creditcard/processor.do';
+$merchant = new Merchant ('Merchant ID', 'API Key');
+...
+```
+
 
 ## Testing
 
