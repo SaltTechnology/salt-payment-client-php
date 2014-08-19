@@ -29,8 +29,8 @@ class HttpsCreditCardServiceTest extends PHPUnit_Framework_TestCase {
         $this->validCard = new CreditCard( VALID_CARD, CARD_EXPIRY_DATE, null, CARD_STREET, CARD_POSTAL );
         $this->invalidCard = new CreditCard( INVALID_CARD, CARD_EXPIRY_DATE, null, CARD_STREET, CARD_POSTAL );
 
-        $this->validPaymentProfile = new PaymentProfile($this->validCard, null);
-        $this->invalidPaymentProfile = new PaymentProfile($this->invalidCard, null);
+        $this->validPaymentProfile = new PaymentProfile( $this->validCard, null );
+        $this->invalidPaymentProfile = new PaymentProfile( $this->invalidCard, null );
     }
 
     protected function tearDown() {
@@ -69,7 +69,7 @@ class HttpsCreditCardServiceTest extends PHPUnit_Framework_TestCase {
     public function testCardStorageWithValidMerchantAndCard() {
         $storageToken = uniqid();
         $receipt = $this->validHttpsCardService->addToStorage( $storageToken, $this->validPaymentProfile );
-        
+
         $this->assertTrue( $receipt->approved );
         //TODO: Check if we want to read the receipt itself?
     }
@@ -123,6 +123,10 @@ class HttpsCreditCardServiceTest extends PHPUnit_Framework_TestCase {
     }
 
     public function testRecurringPurchaseWithInvalidCard() {
+        $this->fail( 'Please implement this test case.' );
+    }
+
+    public function testVerificationRequestion() {
         $this->fail( 'Please implement this test case.' );
     }
 
