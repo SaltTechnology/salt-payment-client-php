@@ -98,28 +98,28 @@ define('SHIPPING_TYPE_STANDARD','ST');
 
 // Connection parameters to the gateway
 define('TEST_GATEWAY_URL','https://test.salt.com/gateway/creditcard/processor.do');
-define('FIRST_TEST_MERCHANT_ID','5333621');
-define('FIRST_TEST_API_TOKEN','0af93aad017256865259cc7209878a1f');
-define('SECOND_TEST_MERCHANT_ID','300');
-define('SECOND_TEST_API_TOKEN','abc');
+define('VALID_MERCHANT_ID','5333621');
+define('VALID_API_TOKEN','0af93aad017256865259cc7209878a1f');
+define('INVALID_MERCHANT_ID','Invalid Merchant ID');
+define('INVALID_API_TOKEN','Invalid API Token');
 
 
 // Credit card info from customer - to be stored
-define('FIRST_TEST_CREDIT_CARD','5555555555554444');
-define('SECOND_TEST_CREDIT_CARD','4242424242424242');
-define('CVV2','111');
-define('EXPIRY_DATE','1010');
-define('STREET','123 Street');
-define('ZIP','A1B23C');
+define('VALID_CARD','4242424242424242');
+define('INVALID_CARD','123');
+define('CARD_CVV2','111');
+define('CARD_EXPIRY_DATE','1010');
+define('CARD_STREET','123 Street');
+define('CARD_POSTAL','A1B23C');
 
 // Store data under the token 'my-token-001'
-define('STORAGE_TOKEN','my-token-001');
-define('STORAGE_APPROVED','Storage Approved:');
+// define('STORAGE_TOKEN','my-token-001');
+// define('STORAGE_APPROVED','Storage Approved:');
 
 // Single purchase
-define('ORDER_ID','stored-card-001');
-define('AMOUNT','100');
-define('SINGLE_PURCHASE_RESULTS','Single Purchase with stored card results:');
+// define('ORDER_ID','stored-card-001');
+// define('AMOUNT','100');
+// define('SINGLE_PURCHASE_RESULTS','Single Purchase with stored card results:');
 
 // Recurring purchase
 define('SCHEDULE_WEEK','2');
