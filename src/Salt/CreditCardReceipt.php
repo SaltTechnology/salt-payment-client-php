@@ -76,12 +76,15 @@ class CreditCardReceipt {
         }
 
 
+        if ( isset( $this->params["ERROR_CODE"] ) && $this->params["ERROR_CODE"] != '0' && isset( $this->params["ERROR_MESSAGE"] ) ) {
+            throw new SaltError( constant( $this->params["ERROR_MESSAGE"] ) );
+        }
         // parse the param into data class objects
 
 
         if ( isset( $this->params["APPROVED"] ) ) {
-            $this->approved = $this->params["APPROVED"] == 'true';}
-        else {
+            $this->approved = $this->params["APPROVED"] == 'true';
+        } else {
 
             throw new SaltError( UNDEFINED_CREDIT_CARD_INFO );
         }
@@ -91,24 +94,21 @@ class CreditCardReceipt {
         else {
             throw new SaltError( UNDEFINED_TRANSACTION_INFO );
         }
+
         if ( isset( $this->params["ORDER_ID"] ) ) {
             $this->orderId = $this->params["ORDER_ID"];
-        }
-
-        else {
+        } else {
             throw new SaltError( UNDEFINED_ORDER_ID );
         }
         if ( isset( $this->params["PROCESSED_DATE"] ) ) {
             // returned date time is in yymmddhhiiss format
             $processedDate = $this->params["PROCESSED_DATE"];
-        }
-        else {
+        } else {
             throw new SaltError( UNDEFINED_PROCESSED_DATE );
         }
         if ( isset( $this->params["PROCESSED_TIME"] ) ) {
             $processedTime = $this->params["PROCESSED_TIME"];
-        }
-        else {
+        } else {
             throw new SaltError( UNDEFINED_PROCESSED_TIME );
         }
 
@@ -134,14 +134,12 @@ class CreditCardReceipt {
 
         if ( isset( $this->params["ERROR_MESSAGE"] ) ) {
             $this->errorMessage = $this->params["ERROR_MESSAGE"];
-        }
-        else {
+        } else {
             throw new SaltError( UNDEFINED_ERROR_MESSAGE );
         }
         if ( isset( $this->params["DEBUG_MESSAGE"] ) ) {
             $this->debugMessage = $this->params["DEBUG_MESSAGE"];
-        }
-        else {
+        } else {
             throw new SaltError( UNDEFINED_DEBUG_MESSAGE );
         }
 
@@ -247,21 +245,22 @@ class CreditCardReceipt {
 
 
         }
-        if ( isset( $this->params["FRAUD_SCORE"] ) ) {
 
-            //Parse fraud related parameters
-            $this->fraudScore = $this->params["FRAUD_SCORE"];
-        }
-        else {
-            throw new SaltError( UNDEFINED_FRAUD_SCORE );
-        }
-        if ( isset( $this->params["FRAUD_DECISION"] ) ) {
+        // if ( isset( $this->params["FRAUD_SCORE"] ) ) {
 
-            $this->fraudDecision = $this->params["FRAUD_DECISION"];
-        }
-        else {
-            throw new SaltError( UNDEFINED_FRAUD_DECISION );
-        }
+        //     //Parse fraud related parameters
+        //     $this->fraudScore = $this->params["FRAUD_SCORE"];
+        // }
+        // else {
+        //     throw new SaltError( UNDEFINED_FRAUD_SCORE );
+        // }
+        // if ( isset( $this->params["FRAUD_DECISION"] ) ) {
+
+        //     $this->fraudDecision = $this->params["FRAUD_DECISION"];
+        // }
+        // else {
+        //     throw new SaltError( UNDEFINED_FRAUD_DECISION );
+        // }
 
         // parse periodic purchase info
         $periodicPurchaseId = $this->params["PERIODIC_TRANSACTION_ID"];

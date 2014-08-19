@@ -13,7 +13,7 @@ class CreditCard {
         $street = null, $zip = null, $secureCode = null, $magneticData = null, $cardHolderName = null ) {
         $this->creditCardNumber = $creditCardNumber;
         $this->expiryDate = $expiryDate;
-        //$this->magneticData = $magneticData;
+        $this->magneticData = $magneticData;
         $this->cvv2 = $cvv2;
         $this->street = $street;
         $this->zip = $zip;

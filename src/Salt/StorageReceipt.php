@@ -28,6 +28,7 @@ class StorageReceipt {
             list( $paramKey, $paramValue ) = explode( "=", $lines[$i] );
             $this->params[$paramKey] = $paramValue;
         }
+        
         $this->approved = $this->params["APPROVED"] == 'true';
 
         if ( isset( $this->params["ERROR_CODE"] ) && $this->params["ERROR_CODE"] != '0' && isset( $this->params["ERROR_MESSAGE"] ) ) {
@@ -65,45 +66,45 @@ class StorageReceipt {
                 if ( $customerProfileAvailable != null && $customerProfileAvailable ) {
                     $profile = new CustomerProfile();
                     if ( isset( $this->params["CUSTOMER_PROFILE_LEGAL_NAME"] ) ) {
-                        $profile->setLegalName( $this->params["CUSTOMER_PROFILE_LEGAL_NAME"] );
+                        $profile->legalName = $this->params["CUSTOMER_PROFILE_LEGAL_NAME"];
                     }
                     if ( isset( $this->params["CUSTOMER_PROFILE_TRADE_NAME"] ) ) {
-                        $profile->setTradeName( $this->params["CUSTOMER_PROFILE_TRADE_NAME"] );
+                        $profile->tradeName = $this->params["CUSTOMER_PROFILE_TRADE_NAME"];
                     }
 
                     if ( isset( $this->params["CUSTOMER_PROFILE_WEBSITE"] ) ) {
 
-                        $profile->setWebsite( $this->params["CUSTOMER_PROFILE_WEBSITE"] );
+                        $profile->website = $this->params["CUSTOMER_PROFILE_WEBSITE"];
                     }
                     if ( isset( $this->params["CUSTOMER_PROFILE_FIRST_NAME"] ) ) {
-                        $profile->setFirstName( $this->params["CUSTOMER_PROFILE_FIRST_NAME"] );
+                        $profile->firstName = $this->params["CUSTOMER_PROFILE_FIRST_NAME"];
                     }
                     if ( isset( $this->params["CUSTOMER_PROFILE_LAST_NAME"] ) ) {
-                        $profile->setLastName( $this->params["CUSTOMER_PROFILE_LAST_NAME"] );
+                        $profile->lastName = $this->params["CUSTOMER_PROFILE_LAST_NAME"];
                     }
                     if ( isset( $this->params["CUSTOMER_PROFILE_PHONE_NUMBER"] ) ) {
-                        $profile->setPhoneNumber( $this->params["CUSTOMER_PROFILE_PHONE_NUMBER"] );
+                        $profile->phoneNumber =$this->params["CUSTOMER_PROFILE_PHONE_NUMBER"];
                     }
                     if ( isset( $this->params["CUSTOMER_PROFILE_FAX_NUMBER"] ) ) {
-                        $profile->setFaxNumber( $this->params["CUSTOMER_PROFILE_FAX_NUMBER"] );
+                        $profile->faxNumber = $this->params["CUSTOMER_PROFILE_FAX_NUMBER"];
                     }
                     if ( isset( $this->params["CUSTOMER_PROFILE_ADDRESS1"] ) ) {
-                        $profile->setAddress1( $this->params["CUSTOMER_PROFILE_ADDRESS1"] );
+                        $profile->address1 =$this->params["CUSTOMER_PROFILE_ADDRESS1"];
                     }
                     if ( isset( $this->params["CUSTOMER_PROFILE_ADDRESS2"] ) ) {
-                        $profile->setAddress2( $this->params["CUSTOMER_PROFILE_ADDRESS2"] );
+                        $profile->address2 = $this->params["CUSTOMER_PROFILE_ADDRESS2"];
                     }
                     if ( isset( $this->params["CUSTOMER_PROFILE_CITY"] ) ) {
-                        $profile->setCity( $this->params["CUSTOMER_PROFILE_CITY"] );
+                        $profile->city = $this->params["CUSTOMER_PROFILE_CITY"];
                     }
                     if ( isset( $this->params["CUSTOMER_PROFILE_PROVINCE"] ) ) {
-                        $profile->setProvince( $this->params["CUSTOMER_PROFILE_PROVINCE"] );
+                        $profile->province = $this->params["CUSTOMER_PROFILE_PROVINCE"];
                     }
                     if ( isset( $this->params["CUSTOMER_PROFILE_POSTAL"] ) ) {
-                        $profile->setPostal( $this->params["CUSTOMER_PROFILE_POSTAL"] );
+                        $profile->postal = $this->params["CUSTOMER_PROFILE_POSTAL"];
                     }
                     if ( isset( $this->params["CUSTOMER_PROFILE_COUNTRY"] ) ) {
-                        $profile->setCountry( $this->params["CUSTOMER_PROFILE_COUNTRY"] );
+                        $profile->country = $this->params["CUSTOMER_PROFILE_COUNTRY"];
                     }
                 }
                 $this->paymentProfile = new PaymentProfile( $creditCard, $profile );
