@@ -1,34 +1,41 @@
 <?php
-include __DIR__.'../src/SALT.php';
+include __DIR__.'/../src/SALT.php';
 
 /** An example of using the SALT Secure Storage API to store then use a stored Credit Card */
 
+use \SALT\Merchant;
+use \SALT\HttpsCreditCardService;
+use \SALT\CreditCard;
+use \SALT\PaymentProfile;
+
 // connection parameters to the gateway
 $url = 'https://test.salt.com/gateway/creditcard/processor.do';
-$merchant = new Merchant ('yourMerchatId', 'yourApiToken');
+$merchant = new Merchant ('Your Merchant Token', 'Your API Key');
 $service = new HttpsCreditCardService($merchant, $url);
 
 // credit card info from customer - to be stored
-$creditCard = new CreditCard('5555555555554444', '1010', null, '123 Street', 'A1B23C');
+$creditCard = new CreditCard('4242424242424242', '1010', null, '123 Street', 'A1B23C');
 
 // payment profile to be stored (just using the card component in this example)
 $paymentProfile = new PaymentProfile($creditCard, null);
 
 // store data under the token 'my-token-001'
-$storageToken = 'my-token-001';
+//$storageToken = 'my-token-'.date('Ymd');
+$storageToken = uniqid();
 $receipt = $service->addToStorage($storageToken, $paymentProfile);
 
 // Approved?
-echo 'Storage Approved: ' . $receipt->isApproved();
+echo 'Storage Approved: ' . $receipt->approved;
 
 // if stored, now use in a purchase
-if ($receipt->isApproved() != 'false') {
-	// send request
-	$receipt = $service->singlePurchase('stored-card-001', $storageToken, '100', null);
-	// array dump of response params
-	echo '<br/>';
-	echo 'Single Purchase with stored card results: '; 
-	print_r($receipt->params);
+if ($receipt->approved) {
+    // send request
+    //$receipt = $service->singlePurchase('stored-card-'.date('Ymd'), $storageToken, '100', null);
+    $receipt = $service->singlePurchase(uniqid(), $storageToken, '100', null);
+    // array dump of response params
+    echo '\n';
+    echo 'Single Purchase with stored card results: '; 
+    print_r($receipt->params);
 }
 
 ?>
