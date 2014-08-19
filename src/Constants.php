@@ -97,7 +97,7 @@ define('SHIPPING_TYPE_SECOND_DAY','2D');
 define('SHIPPING_TYPE_STANDARD','ST');
 
 // Connection parameters to the gateway
-define('GATEWAY_URL','https://test.salt.com/gateway/creditcard/processor.do');
+define('TEST_GATEWAY_URL','https://test.salt.com/gateway/creditcard/processor.do');
 define('FIRST_TEST_MERCHANT_ID','5333621');
 define('FIRST_TEST_API_TOKEN','0af93aad017256865259cc7209878a1f');
 define('SECOND_TEST_MERCHANT_ID','300');
