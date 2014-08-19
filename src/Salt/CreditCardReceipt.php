@@ -204,9 +204,9 @@ class CreditCardReceipt {
             if ( isset( $this->params["ZIP_MATCHED"] )===false ) {
                 throw new SaltError( UNDEFINED_ZIP_MATCHED );
             }
-            if ( isset( $this->params["ZIP_TYPE"] )===false ) {
-                throw new SaltError( UNDEFINED_ZIP_TYPE );
-            }
+            // if ( isset( $this->params["ZIP_TYPE"] )===false ) {
+            //     throw new SaltError( UNDEFINED_ZIP_TYPE );
+            // }
             if ( isset( $this->params["AVS_RESPONSE_CODE"] ) && isset( $this->params["STREET_MATCHED"] ) && isset( $this->params["ZIP_MATCHED"] )
                 && isset( $this->params["ZIP_TYPE"] ) ) {
                 $this->avsResponse = new AvsResponse(
