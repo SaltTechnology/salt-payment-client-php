@@ -35,5 +35,5 @@ $merchant = new Merchant ('Merchant ID', 'API Key');
 
 To run the tests, you'll need PHPUnit. Run the following on your command line from the root directory of this project:
 ```
-> phpunit --bootstrap src/Salt.php tests/*
+> phpunit --bootstrap src/Salt.php tests/
 ```
