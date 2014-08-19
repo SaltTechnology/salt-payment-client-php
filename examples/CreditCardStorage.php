@@ -1,5 +1,5 @@
 <?php
-include __DIR__.'/../src/SALT.php';
+include __DIR__.'/../lib/SALT.php';
 
 /** An example of using the SALT Secure Storage API to store then use a stored Credit Card */
 
@@ -10,7 +10,7 @@ use \SALT\PaymentProfile;
 
 // connection parameters to the gateway
 $url = 'https://test.salt.com/gateway/creditcard/processor.do';
-$merchant = new Merchant ('Your Merchant Token', 'Your API Key');
+$merchant = new Merchant ('Your Merchant ID', 'Your API Token');
 $service = new HttpsCreditCardService($merchant, $url);
 
 // credit card info from customer - to be stored
@@ -25,7 +25,7 @@ $storageToken = uniqid();
 $receipt = $service->addToStorage($storageToken, $paymentProfile);
 
 // Approved?
-echo 'Storage Approved: ' . $receipt->approved;
+echo 'Storage Approved: ' . $receipt->approved ? "true" : "false";
 
 // if stored, now use in a purchase
 if ($receipt->approved) {

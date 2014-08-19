@@ -1,5 +1,5 @@
 <?php
-include __DIR__.'/../src/SALT.php';
+include __DIR__.'/../lib/SALT.php';
 
 /** An example of how to create a Recurring Purchase using the SALT Client API */
 use \SALT\Merchant;

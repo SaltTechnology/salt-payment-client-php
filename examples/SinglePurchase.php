@@ -1,5 +1,5 @@
 <?php
-include __DIR__.'/../src/SALT.php';
+include __DIR__.'/../lib/SALT.php';
 
 /** Credit Card Single Purchase with SALT Payment API */
 use \SALT\Merchant;
