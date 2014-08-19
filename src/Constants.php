@@ -45,7 +45,10 @@ define('MARKET_SEGMENT_INTERNET', 'I');
 define('MARKET_SEGMENT_MOTO', 'M');
 define('MARKET_SEGMENT_RETAIL', 'G');
 
-
+// PeriodicPurchaseInfo
+define('MONTH', 0);
+define('WEEK', 1);
+define('DAY', 2);
 
 
 // Credit Card Receipt

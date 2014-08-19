@@ -1,11 +1,17 @@
 <?php
-include '../lib/HttpsCreditCardService.php';
+include __DIR__.'/../src/SALT.php';
 
+/** An example of using the SALT Secure Storage API to store then use a stored Credit Card */
+
+use \SALT\Merchant;
+use \SALT\HttpsCreditCardService;
+use \SALT\CreditCard;
+use \SALT\Schedule;
 /** An example of how to create a Recurring Purchase using the SALT Client API */
 
 // connection parameters to the Admeris CC gateway
 $url = 'https://test.salt.com/gateway/creditcard/processor.do';
-$merchant = new Merchant ('yourMerchatId', 'yourApiToken');
+$merchant = new Merchant ('Your Merchant Token', 'Your API Key');
 $service = new HttpsCreditCardService($merchant, $url);
 
 // credit card info from customer
@@ -16,12 +22,12 @@ $schedule = new Schedule(WEEK, 2);
 
 // set a recurring purchase to run from 2013-10-10 until 2013-12-10
 // Note that date format is 'yymmdd'
-$receipt = $service->recurringPurchase('recurring-001', $creditCard, '1000', '131010', '131210', $schedule, null);
+$receipt = $service->recurringPurchase(uniqid(), $creditCard, '1000', '131010', '131210', $schedule, null);
 
 // Show result (see DataClasses.php, class CreditCardReceipt for more fields)
-echo 'Approved: ' . $receipt->isApproved();
-echo '<br/>';
-echo 'Periodic Txn ID: ' . $receipt->getPeriodicPurchaseInfo()->getPeriodicTransactionId();
-echo '<br/>';
-echo 'Debug Message: ' . $receipt->getDebugMessage();
+echo 'Approved: ' . $receipt->approved;
+echo "\n";
+echo 'Periodic Transaction ID: ' . $receipt->periodicPurchaseInfo->periodicTransactionId;
+echo "\n";
+echo 'Debug Message: ' . $receipt->debugMessage;
 ?>

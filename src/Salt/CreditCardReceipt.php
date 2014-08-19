@@ -149,18 +149,18 @@ class CreditCardReceipt {
             throw new SaltError( UNDEFINED_AUTHORIZED_AMOUNT );
         }
 
-        if ( isset( $this->params["APPROVAL_CODE"] )===false ) {
-            throw new SaltError( UNDEFINED_APPROVAL_CODE );
-        }
+        // if ( isset( $this->params["APPROVAL_CODE"] )===false ) {
+        //     throw new SaltError( UNDEFINED_APPROVAL_CODE );
+        // }
 
 
-        if ( isset( $this->params["TRACE_NUMBER"] )===false ) {
-            throw new SaltError( UNDEFINED_TRACE_NUMBER );
-        }
+        // if ( isset( $this->params["TRACE_NUMBER"] )===false ) {
+        //     throw new SaltError( UNDEFINED_TRACE_NUMBER );
+        // }
 
-        if ( isset( $this->params["REFERENCE_NUMBER"] )===false ) {
-            throw new SaltError( UNDEFINED_REFERENCE_NUMBER ) ;
-        }
+        // if ( isset( $this->params["REFERENCE_NUMBER"] )===false ) {
+        //     throw new SaltError( UNDEFINED_REFERENCE_NUMBER ) ;
+        // }
 
         if ( isset( $this->params["AUTHORIZED_AMOUNT"] ) && isset( $this->params["APPROVAL_CODE"] ) && isset( $this->params["TRACE_NUMBER"] ) && isset( $this->params["REFERENCE_NUMBER"] ) ) {
 
@@ -220,12 +220,12 @@ class CreditCardReceipt {
                 $this->avsResponse = null;
             }
         }
-        if ( isset( $this->params["CVV2_RESPONSE_MESSAGE"] )===false ) {
-            throw new SaltError( UNDEFINED_CVV2_RESPONSE_MESSAGE );
-        }
-        if ( isset( $this->params["CVV2_RESPONSE_CODE"] )===false ) {
-            throw new SaltError( UNDEFINED_CVV2_RESPONSE_CODE );
-        }
+        // if ( isset( $this->params["CVV2_RESPONSE_MESSAGE"] )===false ) {
+        //     throw new SaltError( UNDEFINED_CVV2_RESPONSE_MESSAGE );
+        // }
+        // if ( isset( $this->params["CVV2_RESPONSE_CODE"] )===false ) {
+        //     throw new SaltError( UNDEFINED_CVV2_RESPONSE_CODE );
+        // }
 
 
         if ( isset( $this->params["CVV2_RESPONSE_MESSAGE"] ) && isset( $this->params["CVV2_RESPONSE_CODE"] ) ) {
