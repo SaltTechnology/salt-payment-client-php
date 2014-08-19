@@ -77,7 +77,7 @@ class CreditCardReceipt {
 
 
         if ( isset( $this->params["ERROR_CODE"] ) && $this->params["ERROR_CODE"] != '0' && isset( $this->params["ERROR_MESSAGE"] ) ) {
-            throw new SaltError( constant( $this->params["ERROR_MESSAGE"] ) );
+            throw new SaltError( $this->params['ERROR_MESSAGE'] . ": " . constant( $this->params["ERROR_MESSAGE"] ) );
         }
         // parse the param into data class objects
 

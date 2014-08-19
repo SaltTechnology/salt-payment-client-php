@@ -32,7 +32,7 @@ class StorageReceipt {
         $this->approved = $this->params["APPROVED"] == 'true';
 
         if ( isset( $this->params["ERROR_CODE"] ) && $this->params["ERROR_CODE"] != '0' && isset( $this->params["ERROR_MESSAGE"] ) ) {
-            throw new SaltError( constant($this->params["ERROR_MESSAGE"]) );
+            throw new SaltError( $this->params["ERROR_MESSAGE"] . ': ' . constant($this->params["ERROR_MESSAGE"]) );
         }
 
         if ( isset( $this->params["STORAGE_TOKEN_ID"] ) ) {
