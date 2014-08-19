@@ -1,15 +1,13 @@
 <?php
 include __DIR__.'/../src/SALT.php';
 
-/** An example of using the SALT Secure Storage API to store then use a stored Credit Card */
-
+/** An example of how to create a Recurring Purchase using the SALT Client API */
 use \SALT\Merchant;
 use \SALT\HttpsCreditCardService;
 use \SALT\CreditCard;
 use \SALT\Schedule;
-/** An example of how to create a Recurring Purchase using the SALT Client API */
 
-// connection parameters to the Admeris CC gateway
+// connection parameters to the Salt CC gateway
 $url = 'https://test.salt.com/gateway/creditcard/processor.do';
 $merchant = new Merchant ('Your Merchant Token', 'Your API Key');
 $service = new HttpsCreditCardService($merchant, $url);
