@@ -23,18 +23,51 @@ $paymentProfile = new PaymentProfile( $creditCard, null );
 // store data under the token 'my-token-001'
 //$storageToken = 'my-token-'.date('Ymd');
 $storageToken = uniqid();
-$receipt = $service->addToStorage( $storageToken, $paymentProfile );
+$storageReceipt = $service->addToStorage( $storageToken, $paymentProfile );
 
-// Approved?
-echo 'Storage Approved: ' . $receipt->approved ? "true" : "false";
 
-// if stored, now use in a purchase
-if ( $receipt->approved ) {
-    // send request
-    //$receipt = $service->singlePurchase('stored-card-'.date('Ymd'), $storageToken, '100', null);
-    $receipt = $service->singlePurchase( uniqid(), $storageToken, '100', null );
-    // array dump of response params
-    echo '\n';
-    echo 'Single Purchase with stored card results: ';
-    print_r( $receipt->params );
+
+if ( $storageReceipt->approved ) {
+    echo "Credit card storage approved.\n";
+    $purchaseOrderId = uniqid();
+    echo "Creating Single purchase with Order ID $purchaseOrderId\n";
+    $singlePurchaseReceipt = $service->singlePurchase( $purchaseOrderId, $storageToken, '100', null );
+
+    // optional array dump of response params
+    // print_r($receipt->params);
+
+    if ( $singlePurchaseReceipt->approved ) {
+        //Store the transaction id.
+        echo "Single Purchase Receipt approved\n";
+    } else {
+        echo "Single purchase receipt not approved\n";
+    }
+} else {
+    echo "Credit card storage not approved.\n";
+}
+
+
+
+//Update the credit card stored
+$updatedCreditCard = new CreditCard ( '4012888888881881', '1010', null, '1 Market St.', '94105' );
+$paymentProfile->creditCard = $updatedCreditCard;
+
+$updatedStorageReceipt = $service->updateStorage($storageToken, $paymentProfile);
+
+
+if ( $updatedStorageReceipt->approved ) {
+    echo "Updated credit card storage approved.\n";
+} else {
+    echo "Updated credit card storage not approved.\n";
+}
+
+//Query the credit card stored
+
+$queryStorageReceipt = $service->queryStorage($storageToken);
+if ( $queryStorageReceipt->approved ) {
+    echo "Secure storage query successful.\n";
+    echo "Response: \n";
+    print_r($queryStorageReceipt->params);
+} else {
+    echo "Secure storage query failed.\n";
 }
